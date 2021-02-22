@@ -22,6 +22,7 @@ namespace PutniNalozi.Data
             modelBuilder.Entity<Automobil>().ToTable("Automobili");
             modelBuilder.Entity<Putnik>().ToTable("Putnici");
             modelBuilder.Entity<PutniNalog>().ToTable("PutniNalozi");
+            modelBuilder.Entity<PutniNaloziPutnici>().ToTable("PutniNaloziPutnici");
         }
         protected void Create() { }
     }

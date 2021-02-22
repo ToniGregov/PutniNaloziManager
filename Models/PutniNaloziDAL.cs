@@ -37,7 +37,7 @@ namespace PutniNalozi.Models
             {
                 return db.PutniNalozi
                     .Include(a => a.Automobil)
-                    //.Include(p => p.Putnici)
+                    .Include(p => p.PutniNaloziPutnici)
                     .ToList();
             }
             catch
@@ -98,10 +98,10 @@ namespace PutniNalozi.Models
             try
             {
                 db.Automobili.Attach(nalog.Automobil);
-                foreach(Putnik putnik in nalog.Putnici)
-                {
-                    db.Putnici.Attach(putnik);
-                }
+                //foreach(Putnik putnik in nalog.Putnici)
+                //{
+                //    db.Putnici.Attach(putnik);
+                //}
                 
                 db.PutniNalozi.Add(nalog);
                 db.SaveChanges();

@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PutniNalozi.Data;
 
 namespace PutniNaloziManager.Migrations
 {
     [DbContext(typeof(PutniNaloziDBContext))]
-    partial class PutniNaloziDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210222113548_UpdateModela_AddAgregaciaj")]
+    partial class UpdateModela_AddAgregaciaj
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

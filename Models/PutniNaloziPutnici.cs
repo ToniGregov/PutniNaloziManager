@@ -11,7 +11,7 @@ namespace PutniNaloziManager.Models
     public class PutniNaloziPutnici
     {
         [ForeignKey("PutniNalog")]
-        public string PutniNalogId { get; set; }
+        public int PutniNalogId { get; set; }
         public PutniNalog PutniNalog { get; set; }
         [ForeignKey("Putnik")]
         public string PutnikId { get; set; }
