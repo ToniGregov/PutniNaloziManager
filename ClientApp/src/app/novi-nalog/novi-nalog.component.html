@@ -1,0 +1,116 @@
+<!--<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  Redni Broj Naloga<br />
+  <input type="text" id="redniBrojNalog" name="redniBrojNalog" [(ngModel)]="nalog.redniBrojNalog" /><br />
+  Polazak<br />
+  <input type="date" id="polazak" name="polazak" [(ngModel)]="nalog.polazak" /><br />
+  Povratak<br />
+  <input type="date" id="povratak" name="povratak" [(ngModel)]="nalog.povratak" /><br />
+  Razlog Putovanja<br />
+  <input type="text" id="razlogPutovanja" name="razlogPutovanja" [(ngModel)]="nalog.razlogPutovanja" /><br />
+  Putnici<br />
+  <input type="text" id="putnici" name="putnici" [(ngModel)]="nalog.putnici" /><br />
+  Polaziste<br />
+  <input type="text" id="polaziste" name="polaziste" [(ngModel)]="nalog.polaziste" /><br />
+  Odrediste<br />
+  <input type="text" id="odrediste" name="odrediste" [(ngModel)]="nalog.odrediste" /><br />
+  Prijevoz<br />
+  <input type="text" id="prijevoz" name="prijevoz" [(ngModel)]="nalog.prijevoz" /><br />
+  Automobil<br />
+  <input type="text" id="automobil" name="automobil" [(ngModel)]="nalog.automobil" /><br />
+  Komentar<br />
+  <input type="text" id="komentar" name="komentar" [(ngModel)]="nalog.komentar" /><br />
+  Email za odobrenje<br />
+  <input type="email" id="emailZaOdobrenje" name="emailZaOdobrenje" [(ngModel)]="nalog.emailZaOdobrenje" /><br />
+  Početna kilometraža<br />
+  <input type="number" id="pocetnaKilometraza" name="pocetnaKilometraza" [(ngModel)]="nalog.pocetnaKilometraza" /><br />
+  Završna kilometraža<br />
+  <input type="number" id="zavrsnaKilometraza" name="zavrsnaKilometraza" [(ngModel)]="nalog.zavrsnaKilometraza" /><br />
+  Troškovi<br />
+  <input type="text" id="troskovi" name="troskovi" [(ngModel)]="nalog.troskovi" /><br />
+  Zaključano<br />
+  <input type="checkbox" id="isLocked" name="isLocked" readonly [(ngModel)]="nalog.isLocked" /><br />
+  <button class="btn btn-primary">Spremi</button>-->
+
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <div class="basic-info-wrapper">
+    <div style="grid-area: 1 / 1 / 2 / 2;">
+      <b>Rbr.</b><br />
+      <input type="text" id="redniBrojNalog" name="redniBrojNalog" [(ngModel)]="redniBrojNalog" />
+    </div>
+    <div style="grid-area: 1 / 2 / 2 / 3;">
+      <b>Polazak:</b><br />
+      <input type="date" id="polazak" name="polazak" [(ngModel)]="polazak" />
+    </div>
+    <div style="grid-area: 1 / 3 / 2 / 4;">
+      <b>Povratak:</b><br />
+      <input type="date" id="povratak" name="povratak" [(ngModel)]="povratak" />
+    </div>
+    <div style="grid-area: 1 / 4 / 2 / 5;">
+      <b>Polazište:</b><br />
+      <input type="text" id="polaziste" name="polaziste" [(ngModel)]="polaziste" />
+    </div>
+    <div style="grid-area: 1 / 5 / 2 / 6;">
+      <b>Odredište:</b><br />
+      <input type="text" id="odrediste" name="odrediste" [(ngModel)]="odrediste" />
+    </div>
+  </div>
+
+  <div class="extended-info-wrapper">
+    <div style="grid-area: 1 / 1 / 2 / 5;">
+      <b>Razlog putovanja:</b><br />
+      <input type="text" id="razlogPutovanja" name="razlogPutovanja" [(ngModel)]="razlogPutovanja" />
+    </div>
+    <div style="grid-area: 2 / 1 / 3 / 5;">
+      <b>Tip prijevoza:</b><br />
+      <select name="prijevoz" [(ngModel)]="odabraniTipPrijevoza" (change)="onTipPrijevozaChange($event)">
+        <option disabled>Odaberite prijevoz:</option>
+        <option>Javni prijevoz</option>
+        <option>Osobni automobil</option>
+        <option>Privatni automobil</option>
+      </select>
+    </div>
+    <div style="grid-area: 3 / 1 / 4 / 2;"  *ngIf="IsHidden_AutoControl">
+      <select name="automobil" [(ngModel)]="selectedAuto" (change)="onAutoSelectChange($event)">
+        <option disabled>Odaberite automobil:</option>
+        <option name="auto" *ngFor="let auto of automobili">{{auto.marka}} {{auto.naziv}}</option>
+      </select>
+      <!--<b>Marka automobila:</b><br />
+  <input type="text" id="automobil" name="automobil" [(ngModel)]="nalog.automobil.marka" />-->
+    </div>
+    <div style="grid-area: 3 / 2 / 4 / 3;" *ngIf="IsAuto_Selected">
+      <b>Registracijska oznaka:</b><br />
+      {{automobil.registracijskaOznaka}}
+      <!--<b>Naziv automobila:</b><br />
+  <input type="text" id="automobil" name="automobil" [(ngModel)]="nalog.automobil.naziv" />-->
+    </div>
+    <div style="grid-area: 3 / 3 / 4 / 4;" *ngIf="IsAuto_Selected">
+      <b>Kilometraža:</b><br />
+      {{automobil.kilometraza}}
+      <!--<b>Registracija automobila:</b><br />
+      <input type="text" id="automobil" name="automobil" [(ngModel)]="nalog.automobil.registracijskaOznaka" />-->
+    </div>
+    <div style="grid-area: 4 / 1 / 5 / 5;">
+      <b>Komentar:</b><br />
+      <input type="text" id="komentar" name="komentar" [(ngModel)]="komentar" />
+    </div>
+    <div style="grid-area: 5 / 1 / 6 / 5;">
+      <b>Email:</b><br />
+      <input type="email" id="emailZaOdobrenje" name="emailZaOdobrenje" [(ngModel)]="emailZaOdobrenje" />
+    </div>
+    <div style="grid-area: 6 / 1 / 7 / 3;">
+      <b>Početna kilometraža:</b><br />
+      <input type="number" id="pocetnaKilometraza" name="pocetnaKilometraza" [(ngModel)]="pocetnaKilometraza" />
+    </div>
+    <div style="grid-area: 6 / 3 / 7 / 5;">
+      <b>Završna kilometraža:</b><br />
+      <input type="number" id="zavrsnaKilometraza" name="zavrsnaKilometraza" [(ngModel)]="zavrsnaKilometraza" />
+    </div>
+    <div style="grid-area: 7 / 1 / 8 / 5;">
+      <b>Troškovi:</b>
+      <input type="text" id="troskovi" name="troskovi" [(ngModel)]="troskovi" />
+    </div>
+  </div>
+  <input type="checkbox" id="isLocked" name="isLocked" readonly [(ngModel)]="isLocked" /><br />
+  <button class="btn btn-primary">Spremi</button>
+</form>
+

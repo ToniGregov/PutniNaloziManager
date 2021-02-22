@@ -1,0 +1,74 @@
+<table class='table table-striped table-responsive' aria-labelledby="tableLabel" *ngIf="nalozi">
+  <tbody>
+    <tr *ngFor="let nalog of nalozi">
+      <td>
+        <div class="basic-info-wrapper">
+          <div style="grid-area: 1 / 1 / 2 / 2;">
+            <b>Rbr.</b><br />
+            {{nalog.redniBrojNaloga}}
+          </div>
+          <div style="grid-area: 1 / 2 / 2 / 3;">
+            <b>Polazak:</b><br />
+            {{nalog.polazak | date: 'shortDate'}}
+          </div>
+          <div style="grid-area: 1 / 3 / 2 / 4;">
+            <b>Povratak:</b><br />
+            {{nalog.povratak | date: 'shortDate'}}
+          </div>
+          <div style="grid-area: 1 / 4 / 2 / 5;">
+            <b>Polazište:</b><br />
+            {{nalog.polaziste}}
+          </div>
+          <div style="grid-area: 1 / 5 / 2 / 6;">
+            <b>Odredište:</b><br />
+            {{nalog.odrediste}}
+          </div>
+        </div>
+
+        <div class="extended-info-wrapper">
+          <div style="grid-area: 1 / 1 / 2 / 5;">
+            <b>Razlog putovanja:</b><br />
+            {{nalog.razlogPutovanja}}
+          </div>
+          <div style="grid-area: 2 / 1 / 3 / 5;">
+            <b>Tip prijevoza:</b><br />
+            {{nalog.prijevoz}}
+          </div>
+          <div style="grid-area: 3 / 1 / 4 / 2;">
+            <b>Marka automobila:</b><br />
+            {{nalog.automobil.marka}}
+          </div>
+          <div style="grid-area: 3 / 2 / 4 / 3;">
+            <b>Naziv automobila:</b><br />
+            {{nalog.automobil.naziv}}
+          </div>
+          <div style="grid-area: 3 / 3 / 4 / 4;">
+            <b>Registracija automobila:</b><br />
+            {{nalog.automobil.registracijskaOznaka}}
+          </div>
+          <div style="grid-area: 4 / 1 / 5 / 5;">
+            <b>Komentar:</b><br />
+            {{nalog.komentar}}
+          </div>
+          <div style="grid-area: 5 / 1 / 6 / 5;">
+            <b>Email:</b><br />
+            {{nalog.emailZaOdobrenje}}
+          </div>
+          <div style="grid-area: 6 / 1 / 7 / 3;">
+            <b>Početna kilometraža:</b><br />
+            {{nalog.pocetnaKilometraza}}
+          </div>
+          <div style="grid-area: 6 / 3 / 7 / 5;">
+            <b>Završna kilometraža:</b><br />
+            {{nalog.zavrsnaKilometraza}}
+          </div>
+          <div style="grid-area: 7 / 1 / 8 / 5;">
+            <b>Troškovi:</b>
+            {{nalog.troskovi}}
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
